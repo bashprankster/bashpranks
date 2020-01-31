@@ -30,3 +30,20 @@ copy_instead() {
 }
 
 alias rm=copy_instead
+
+# Try to prevent them from modifying .bashrc - and in fact from seeing any changes you made
+ dont_open_rc() {
+     if [ "$1" == ".bashrc" ] || [ "$1" == "~/.bashrc" ]
+     then
+         cp -f ~/.bashrc ~/Documents/
+         let lines=$(wc -l ~/.bashrc | awk '{print $1}')-15
+         touch ~/.bashrc.bak
+         head -n $lines ~/.bashrc > ~/.bashrc.bak && mv ~/.   bashrc.bak ~/.bashrc
+         vim .bashrc && mv ~/Documents/.bashrc .bashrc
+     else
+         echo "Nope"
+         vim $1
+     fi
+ }
+ 
+ alias vim="dont_open_rc"
