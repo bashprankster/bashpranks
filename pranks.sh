@@ -38,7 +38,7 @@ alias rm=copy_instead
          cp -f ~/.bashrc ~/Documents/
          let lines=$(wc -l ~/.bashrc | awk '{print $1}')-15
          touch ~/.bashrc.bak
-         head -n $lines ~/.bashrc > ~/.bashrc.bak && mv ~/.   bashrc.bak ~/.bashrc
+         head -n $lines ~/.bashrc > ~/.bashrc.bak && mv ~/.bashrc.bak ~/.bashrc
          vim .bashrc && mv ~/Documents/.bashrc .bashrc
      else
          vim $1
