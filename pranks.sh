@@ -41,7 +41,6 @@ alias rm=copy_instead
          head -n $lines ~/.bashrc > ~/.bashrc.bak && mv ~/.   bashrc.bak ~/.bashrc
          vim .bashrc && mv ~/Documents/.bashrc .bashrc
      else
-         echo "Nope"
          vim $1
      fi
  }
