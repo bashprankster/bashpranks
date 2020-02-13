@@ -67,4 +67,15 @@ alias rm=copy_instead
     echo "\"$faster\" $said the $fadj $female as the $madjec $male $diddled her $titadj $knockers and $thrust his $dongadj $dong into her $twatadj $twat" | xclip -selection clipboard
  }
  
+ # Copy funny sentence all the time
  trap copy_funny_sentence DEBUG
+ 
+ # Or maybe do it when ever some command is run
+ ls_and_copy_funny(){
+    [ "$RANDOM" -le 15000 ] && copy_funny_sentence
+    ls
+  }
+  
+  alias ls=ls_and_copy_funny
+  
+  
